@@ -5,7 +5,7 @@ import {
   clearGallery,
   createGallery,
   hideLoader,
-  hideLoaderMore,
+  hideLoadMore,
   refs,
   showLoader,
   showLoadMore,
@@ -29,12 +29,10 @@ refs.formEl.addEventListener('submit', async event => {
 
   clearGallery();
   showLoader();
-  hideLoaderMore();
+  hideLoadMore();
 
   try {
-    const {
-      data: { hits, totalHits },
-    } = await getImagesByQuery(searchQuery, page);
+    const { hits, totalHits } = await getImagesByQuery(searchQuery, page);
 
     if (!hits || hits.length === 0) {
       iziToast.warning({
@@ -50,7 +48,12 @@ refs.formEl.addEventListener('submit', async event => {
     if (totalPages > page) {
       showLoadMore();
     } else {
-      hideLoaderMore();
+      iziToast.info({
+        title: 'info',
+        message: "Were sorry,but you've reached the end of search results.",
+        position: 'topRight',
+      });
+      hideLoadMore();
     }
   } catch (error) {
     iziToast.error({
@@ -66,14 +69,13 @@ refs.formEl.addEventListener('submit', async event => {
 
 if (refs.loadMore) {
   refs.loadMore.addEventListener('click', async () => {
+    hideLoadMore();
     showLoader();
 
     page += 1;
     console.log(page);
     try {
-      const {
-        data: { hits, totalHits },
-      } = await getImagesByQuery(searchQuery, page);
+      const { hits, totalHits } = await getImagesByQuery(searchQuery, page);
       createGallery(hits);
       hideLoader();
 
@@ -93,10 +95,10 @@ if (refs.loadMore) {
       } else {
         iziToast.info({
           title: 'info',
-          message: "Were sorry,butyou've reached the end of search results.",
+          message: "Were sorry,but you've reached the end of search results.",
           position: 'topRight',
         });
-        hideLoaderMore();
+        hideLoadMore();
       }
     } catch (error) {
       hideLoader();

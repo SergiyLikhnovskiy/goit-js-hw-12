@@ -68,7 +68,7 @@ export function showLoader() {
   refs.loader.classList.remove('is-hidden');
 }
 
-export function hideLoaderMore() {
+export function hideLoadMore() {
   refs.loadMore.classList.add('is-hidden');
 }
 export function showLoadMore() {
