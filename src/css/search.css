@@ -1,0 +1,130 @@
+.form {
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 32px;
+  margin-top: 36px;
+  gap: 16px;
+}
+.gallery {
+  max-width: 1440px;
+  display: flex;
+
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+.gallery-item {
+  display: block;
+  overflow: hidden;
+  transition: transform 0.2s linear;
+  border: 1px solid #808080;
+}
+.gallery-image {
+  width: 360px;
+  height: 152px;
+  object-fit: cover;
+}
+.info-box {
+  display: flex;
+  justify-content: space-around;
+}
+.info-box p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loader.is-hidden {
+  display: none;
+}
+.Load_more.is-hidden {
+  display: none;
+}
+.Load_more {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+  border-radius: 8px;
+  padding-block: 8px;
+  padding-inline: 16px;
+  width: 125px;
+  height: 40px;
+  background-color: #4e75ff;
+  margin: 40px auto;
+}
+
+.loader {
+  --color-1: rgba(255, 61, 0, 0.2);
+  --color-2: #ff3d00;
+  --color-3: #263238;
+  --size: 2px;
+
+  width: calc(48 * var(--size));
+  height: calc(48 * var(--size));
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  background: linear-gradient(0deg, var(--color-1) 33%, var(--color-2) 100%);
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.loader::after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  left: 25%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(44 * var(--size));
+  height: calc(44 * var(--size));
+  border-radius: 50%;
+  background: var(--color-3);
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+input {
+  border-radius: 4px;
+  width: 272px;
+  height: 40px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  border: 1px solid #808080;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #808080;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+button {
+  display: inline-block;
+  gap: 10px;
+  border-radius: 8px;
+  padding-block: 8px;
+  padding-inline: 16px;
+  width: 91px;
+  height: 40px;
+  background-color: #4e75ff;
+  border: none;
+  color: #fff;
+}
+.form-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
